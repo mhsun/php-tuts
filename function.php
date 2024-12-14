@@ -7,10 +7,3 @@ function login($username, $password)
         echo "Wrong username or password";
     }
 }
-
-if (!empty($_POST)) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    login($username, $password);
-}
