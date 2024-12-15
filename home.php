@@ -1,3 +1,13 @@
+<?php
+
+require_once 'function.php';
+
+if (!isLoggedIn()) {
+    header('Location: /login.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +58,7 @@
 <div class="home-page">
     <h1>Welcome Back!</h1>
     <p>You have successfully logged in.</p>
-    <a href="#">Go to Dashboard</a>
+    <a href="logout.php">Logout</a>
 </div>
 </body>
 </html>

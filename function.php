@@ -1,9 +1,20 @@
 <?php
-function login($username, $password)
+
+require_once 'helper.php';
+
+initializeSession();
+
+function login($username, $password): void
 {
-    if ($username === 'arman' && md5($password) === md5('123')) {
+    if ($username === 'admin' && md5($password) === md5('password')) {
+        $_SESSION['user'] = $username;
         header('Location: /home.php');
     } else {
-        echo "Wrong username or password";
+        flash('error', 'Wrong username or password');
     }
+}
+
+function isLoggedIn(): bool
+{
+    return array_key_exists('user', $_SESSION) && $_SESSION['user'] === 'admin';
 }

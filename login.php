@@ -1,11 +1,10 @@
 <?php
 
 require_once 'function.php';
-require_once 'helper.php';
 
 if (!empty($_POST)) {
-    $username = validate_input($_POST['username']);
-    $password = validate_input($_POST['password']);
+    $username = validateInput($_POST['username']);
+    $password = validateInput($_POST['password']);
 
     if (!empty($username) && !empty($password)) {
         login($username, $password);
@@ -84,9 +83,11 @@ if (!empty($_POST)) {
 <body>
 <form class="login-form" method="post" action="">
     <h2>Login</h2>
+
+    <p style="text-align: center; color: red"><?= flash('error') ?></p>
     <div>
         <label for="username">Username</label>
-        <input type="text" id="username" name="username">
+        <input type="text" value="<?= old('username')?>" id="username" name="username">
         <small><?= getError('username') ?></small>
     </div>
 
